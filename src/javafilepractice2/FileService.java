@@ -7,28 +7,32 @@ package javafilepractice2;
  */
 public class FileService {
   
-    private FileOutputStrategy fos; 
+    
+    private ReadFileStrategy rfs; 
+    private WriteFileStrategy wfs; 
     
     
-    
-    
-    public FileService(ReadFileStrategy rfs, FileOutputStrategy fos) {
+    public FileService(ReadFileStrategy rfs, WriteFileStrategy wfs) {
         this.rfs = rfs;
-        this.fos = fos; 
+        this.wfs = wfs; 
+        
     }
     
     public void readFiles(){
         rfs.readAllFiles();
     }
-    public void setPath(String p){
+    public void setPathRead(String p){
         rfs.setPath(p);
     }
-    
-    public void record(){
-    rfs.record();
-}
-    public void OutputFile(){
-       fos.OutputFile();    
-        
+    public void setPathWrite(String p){
+        wfs.setPath(p);
+    }
+    public void outputRecord(){
+        rfs.OutputRecord();
+    }
+   public void writeToFile(){
+       wfs.writeToFile();
    }
 }
+
+

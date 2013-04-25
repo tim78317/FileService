@@ -20,5 +20,5 @@ public interface ReadFileStrategy {
     
     
     
-    public void record();
+    public void OutputRecord();
 }

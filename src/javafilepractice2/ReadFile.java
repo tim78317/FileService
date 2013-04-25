@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -17,10 +18,12 @@ public class ReadFile implements ReadFileStrategy {
 
     private String path = null;
     private FileOutputStrategy fos;
+    private FormatStrategy fs; 
     List<String> p = new ArrayList<String>();
-    List<String> p2 = new ArrayList<String>();
 
-    public ReadFile() {
+    public ReadFile(FileOutputStrategy fos, FormatStrategy fs) {
+        this.fos = fos;
+        this.fs = fs; 
     }
 
     public void setPath(String path) {
@@ -42,10 +45,18 @@ public class ReadFile implements ReadFileStrategy {
     public void setP(List<String> p) {
         this.p = p;
     }
-    
+
+    public void OutputRecord() {
+        try {
+
+            for (String item : p) {
+                fos.OutputRecord(item);
+            }
+        } catch (Exception e) {
+        }
+    }
 
     public void readAllFiles() {
-
         File data = new File(path);
 
 
@@ -61,38 +72,18 @@ public class ReadFile implements ReadFileStrategy {
 
         } catch (IOException ioe) {
             System.out.println("Houston, we have a problem! reading this file");
-        } finally {
-            try {
-                
-               for (String item : p){
-                   p2.add(item);
-               }
- 
-                in.close();
-            } catch (Exception e) {
-            }
-
 
         }
-
-         
-         }
-         
-   
-  
-    
-    @Override
-    public void record() {
         
-         
+  
     }
 
     public static void main(String[] args) {
-        ReadFile rf = new ReadFile();
+        ReadFileStrategy rf = new ReadFile(new ConsoleOutput(), new CsvFormatStrategy());
 
-
-        rf.setPath("C:\\Users\\tim78317\\Desktop\\adv. java programming\\JavaFilePractice2\\src\\javafilepractice2\\example2.txt");
+        rf.setPath("C:\\Users\\tim78317\\Desktop"
+                + "\\adv. java programming\\JavaFilePractice2\\src\\javafilepractice2\\example2.txt");
         rf.readAllFiles();
-        
+        rf.OutputRecord();
     }
 }
