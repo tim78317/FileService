@@ -1,2 +1,5 @@
-blsah
-for
+This is an example file
+Name: Timothy Liebl 
+Age: 24
+Employer: Butler Tool Inc. 
+Phone Number: (262)-***-****

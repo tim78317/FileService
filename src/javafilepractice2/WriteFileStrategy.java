@@ -9,11 +9,16 @@ package javafilepractice2;
  *
  * @author tim78317
  */
-public interface WriteFileStrategy {
+public interface WriteFileStrategy extends FileStrategy {
     
-    public abstract void writeToFile();
+    @Override
+     public void readOrWriteToFile();
     
-      public void setPath(String path);
+    
+    @Override
+    public void setPath(String path);
        
     
+    @Override
+    public void OutputRecord();
 }

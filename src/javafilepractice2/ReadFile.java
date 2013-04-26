@@ -14,7 +14,7 @@ import java.util.Set;
  *
  * @author tim78317
  */
-public class ReadFile implements ReadFileStrategy {
+public class ReadFile implements FileStrategy {
 
     private String path = null;
     private FileOutputStrategy fos;
@@ -46,6 +46,7 @@ public class ReadFile implements ReadFileStrategy {
         this.p = p;
     }
 
+    @Override
     public void OutputRecord() {
         try {
 
@@ -55,8 +56,9 @@ public class ReadFile implements ReadFileStrategy {
         } catch (Exception e) {
         }
     }
-
-    public void readAllFiles() {
+  
+    @Override
+    public void readOrWriteToFile() {
         File data = new File(path);
 
 
@@ -79,11 +81,10 @@ public class ReadFile implements ReadFileStrategy {
     }
 
     public static void main(String[] args) {
-        ReadFileStrategy rf = new ReadFile(new ConsoleOutput(), new CsvFormatStrategy());
-
+        ReadFile rf = new ReadFile(new GuiOutput(), new CsvFormatStrategy());
         rf.setPath("C:\\Users\\tim78317\\Desktop"
                 + "\\adv. java programming\\JavaFilePractice2\\src\\javafilepractice2\\example2.txt");
-        rf.readAllFiles();
-        rf.OutputRecord();
+        rf.readOrWriteToFile();
+       rf.OutputRecord();
     }
 }

@@ -8,31 +8,32 @@ package javafilepractice2;
 public class FileService {
   
     
-    private ReadFileStrategy rfs; 
-    private WriteFileStrategy wfs; 
+ 
+    private FileStrategy fs;
     
-    
-    public FileService(ReadFileStrategy rfs, WriteFileStrategy wfs) {
-        this.rfs = rfs;
-        this.wfs = wfs; 
+    public FileService(FileStrategy fs) {
+        this.fs = fs;
+         
         
     }
     
-    public void readFiles(){
-        rfs.readAllFiles();
+    public void readOrWriteToFile(){
+
+        fs.readOrWriteToFile();
     }
     public void setPathRead(String p){
-        rfs.setPath(p);
+        fs.setPath(p);
     }
-    public void setPathWrite(String p){
-        wfs.setPath(p);
+    public void setPath(String p){
+        fs.setPath(p);
     }
     public void outputRecord(){
-        rfs.OutputRecord();
+
+        fs.OutputRecord();
     }
-   public void writeToFile(){
-       wfs.writeToFile();
-   }
+  
+  
+   
 }
 
 

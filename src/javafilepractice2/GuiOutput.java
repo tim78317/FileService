@@ -29,9 +29,44 @@ public class GuiOutput implements FileOutputStrategy{
      * @param d 
      */
     @Override
-    public void OutputRecord(String d) {
+    public void OutputRecord(String s) {
+     
       
-        JOptionPane.showMessageDialog(null, d);
+        JOptionPane.showMessageDialog(null, s);
     }
+
+    @Override
+    public void outputEntryMessage() {
+        JOptionPane.showMessageDialog(null, "Enter a record: ");
+        JOptionPane.showInputDialog(this);
+    }
+
+    @Override
+    public void outputAnotherEntryMessage() {
+        JOptionPane.showMessageDialog(null, "Do you want to make another entry?: ");
+    }
+
+    @Override
+    public void outputExceptionMessage() {
+        JOptionPane.showMessageDialog(null, "Houston we have a problem.....");
+    }
+
+    @Override
+    public void outputEndOfFileMessage(String data) {
+        JOptionPane.showMessageDialog(null, "Wrote file to: " + data);
+        JOptionPane.showMessageDialog(null, "End of file.......");
+    }
+
+    @Override
+    public void entryErrorMessage() {
+       JOptionPane.showMessageDialog(null, "Please Enter a Y or N: ");
+    }
+
+    @Override
+    public void noEntryMessage() {
+        
+    }
+
+  
     
 }
